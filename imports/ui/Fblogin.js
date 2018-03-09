@@ -27,6 +27,14 @@ export default class Fblogin extends Component{
                                 console.log("long err ", err);
                             } else {
                                 console.log("long res ", res);
+                                console.log("long res ", res.data.access_token);
+
+                                Meteor.call("tokens.insert",res.data.access_token,"long",(err,res)=>{
+                                    if(err)
+                                        console.log(err);
+                                    else
+                                        console.log("done");
+                                })
                             }
                         });
                     }
