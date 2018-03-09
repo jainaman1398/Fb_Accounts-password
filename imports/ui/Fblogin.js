@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-
+import {Tokens} from "../api/Tokens";
 
 export default class Fblogin extends Component{
 
@@ -17,7 +17,20 @@ export default class Fblogin extends Component{
                     status:"logout"
                 })
                 console.log(yo.state.token);
-
+                Meteor.call("tokens.insert",yo.state.token,"small_term", (err, res) => {
+                    if(err) {
+                        console.log(" err : ", err);
+                    } else {
+                        console.log("shortres : ", res);
+                        Meteor.call("get_fb_long_token",yo.state.token, (err, res) => {
+                            if(err) {
+                                console.log("long err ", err);
+                            } else {
+                                console.log("long res ", res);
+                            }
+                        });
+                    }
+                });
                 console.log('Welcome!  Fetching your information.... ');
                 FB.api('/me', function (response) {
                     console.log('Good to see you, ' + response.name + '.');

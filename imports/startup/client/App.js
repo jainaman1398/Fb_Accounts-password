@@ -34,8 +34,6 @@ export default class App extends Component{
       }
 
       componentDidMount(){
-          fetch('https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=102741830564284&client_secret=f79f5ca6b2a7b0da499ada9bfcc61519&fb_exchange_token=EAABdcXJQebwBABOVZCIJtAb52CFm6X91ZAPRx6bMCAtGF7KneIp4ryULpBl5ZCiTRbK0rhioIzHkcgE4tUCsasOiaN29DxUo17F6nDmF4TVkGIJkBF8ZAi0zDAioHKwlsgxLvpQLMF3jzP7ZCZCxQhlv2vVPwe6AAi4dPPGOJgeOUJROT8DJZAqU3vSoNH5CZAnHvZAhPAQx2tQZDZD')
-              .then((response)=>response.json())
           this.login();
       }
 
@@ -49,6 +47,23 @@ export default class App extends Component{
         )
     }
 }
+
+/*export default  class App extends Component{
+    constructor(props){
+        super(props);
+        this.State={
+            query_string:" "
+        }
+    }
+
+    render(){
+        return(
+            <div>
+            <input value={this.state.query_string} placeholder="Page Search" />
+            </div>
+        )
+    }
+}*/
 
 Meteor.startup(()=>{
     ReactDOM.render(<App />,document.querySelector('.render-target'));
