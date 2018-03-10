@@ -4,30 +4,28 @@ export default class Table extends Component{
 
     constructor(props){
         super(props);
-        this.props=props;
-        console.log("props",props);
-        this.state={
-            data:props.data.data
-        };
+
     }
 
 
-  /*  getdata(){
-        let data={this.state.data};
+   getdata(data){
         console.log("map",data);
-        if(data) {
+        data=data.data||[];
+        data=data.data||[];
+
+
             return data.map((task, key) => {
-                <li>{task.id}</li>
+               return <li>{task.id}{task.name}</li>
             })
-        }
-    }*/
+
+    }
 
     render(){
 
-        this.setState({data:this.props});
+
         return(
             <div>
-         <h>{this.state.data}</h>
+         <ul>{this.getdata(this.props.data)}</ul>
             </div>
         )
     }
