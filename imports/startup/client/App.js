@@ -1,12 +1,12 @@
 import React,{Component} from "react";
 import ReactDOM from "react-dom";
-import {pages_search} from "../../api/pages_search"
+//import  "../server/pages_search"
 import Head from "../../ui/header"
 import Fblogin from "../../ui/Fblogin"
 var faker=require('faker');
+import List from "../../ui/List"
 
-
-/*export default class App extends Component{
+export default class App extends Component{
       constructor(props){
           super(props);
       };
@@ -43,53 +43,13 @@ var faker=require('faker');
         return (
             <div>
                 <Fblogin />
-
+               <List />
             </div>
         )
     }
 }
 
-*/
 
-export default  class App extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            query_string:" "
-        }
-    }
-
-    aj(event){
-        console.log(event.target.value);
-        this.setState({query_string:event.target.value});
-    }
-
-    click(){
-        console.log("hello"+ this.state.query_string);
-        Meteor.call("page_search_karo",this.state.query_string,(err,res)=>{
-            if(err)
-                console.log(err);
-            else
-                console.log(res);
-        })
-      //  console.log("button clicked");
-    }
-
-
-
-
-    render(){
-        return(
-            <div>
-                <div class="page-header">
-                    <h1>Facebook Page API <small>Extract pages</small></h1>
-                </div>
-            <input value={this.state.query_string} placeholder="Page Search" onChange={this.aj.bind(this)}/>
-                <button className="btn btn-success" onClick={this.click.bind(this)}>Search Pages</button>
-            </div>
-        )
-    }
-}
 
 Meteor.startup(()=>{
     ReactDOM.render(<App />,document.querySelector('.render-target'));

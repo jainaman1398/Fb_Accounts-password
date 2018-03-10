@@ -9,7 +9,7 @@ Meteor.methods({
         let clientSecret = "f79f5ca6b2a7b0da499ada9bfcc61519";
         let apiURL = `${baseURL}${path}&client_id=${clientId}&client_secret=${clientSecret}&fb_exchange_token=${shortToken}`;
         let res = HTTP.call("get", apiURL);
-        console.log("long_res : ", res);
+        console.log("long_res : ", res.data);
         return res;
     }
 });
