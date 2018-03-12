@@ -16,14 +16,37 @@ export default  class List extends Component{
 
     click(){
         console.log("hello"+ this.state.query_string);
-        Meteor.call("page_search_karo",this.state.query_string,(err,res)=>{
-          if(err)
-              console.log(err);
-          else {
-              console.log("pageclick", res);
-              this.setState({data:res});
-          }
-      })
+        Meteor.call("pages.check", this.state.query_string,(err,res)=>{
+            if(err)
+                throw err;
+            else
+            {
+                if(res==undefined)
+                {
+                    Meteor.call("page_search_karo",this.state.query_string,(err,res)=>{
+                        if(err)
+                            console.log(err);
+                        else {
+                            console.log("pageclick", res);
+                            res.data.data.sort((a,b)=>-(a.fan_count)+(b.fan_count));
+                            Meteor.call("pages.insert",this.state.query_string,res,(err,res)=>{
+                                if(err)
+                                    throw err;
+                                else
+                                    console.log("res",res);
+                            })
+                            this.setState({data:res});
+                        }
+                    })
+                }
+                else
+                {
+                    console.log("have data",res.object);
+                    this.setState({data:res.object});
+                }
+            }
+        })
+
 
     }
 

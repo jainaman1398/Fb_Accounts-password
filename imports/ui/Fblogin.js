@@ -59,7 +59,7 @@ export default class Fblogin extends Component{
     render(){
         return(
             <div>
-            <p>FBLogin</p>
+            <h1>FBLogin</h1>
             <button className="btn btn-primary " onClick={this.aman.bind(this)}>Login</button>
 
             <button className="btn btn-primary " onClick={this.aj.bind(this)}>Logout</button>
