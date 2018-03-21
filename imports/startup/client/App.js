@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 //import  "../server/pages_search"
 import Head from "../../ui/header"
 import Fblogin from "../../ui/Fblogin"
+import {Tokens} from "../../api/Tokens";
 var faker=require('faker');
 import List from "../../ui/List"
+import Signup from "../../ui/Signup"
 
 export default class App extends Component{
       constructor(props){
@@ -44,6 +46,7 @@ export default class App extends Component{
             <div>
                 <Fblogin />
                <List />
+                <Signup/>
             </div>
         )
     }

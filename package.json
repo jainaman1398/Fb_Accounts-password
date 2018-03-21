@@ -9,6 +9,7 @@
     "faker": "^4.1.0",
     "meteor-node-stubs": "^0.3.2",
     "react": "^16.2.0",
+    "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^16.2.0",
     "request": "^2.83.0"
   }
