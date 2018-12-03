@@ -17,7 +17,7 @@ export default class App extends Component{
           window.fbAsyncInit = function() {
 
               FB.init({
-                  appId      : '102741830564284',
+                  appId      : '10xxxxx4xxx84',
                   cookie     : true,
                   xfbml      : true,
                   version    : '{latest-api-version}'
